@@ -2,6 +2,8 @@
 #include <cctype>
 #include <string>
 
+using namespace std;
+
 int char_to_int(char input) {
 	input = toupper(input);
 	int output = 0;
@@ -42,9 +44,8 @@ int char_to_int(char input) {
 	return output;
 }
 
-void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], int &ilegalno, int &debug) {
+void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], int &debug) {
     char polje[8] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-	int i, j, k;
     for(int i = 0; i<2; i++) {
         cout << " ";
         for(int j=0;j<8;j++) {
@@ -71,18 +72,18 @@ void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], 
     cout << endl;
 	cout << " ";
     if(debug == 1) {
-        for (i = 0; i < 8; i++) cout << "   " << i; 
+        for (int i = 0; i < 8; i++) cout << "   " << i; 
     }
-    else for (i = 0; i < 8; i++)		cout << "   " <<polje[i];
+    else for (int i = 0; i < 8; i++)		cout << "   " <<polje[i];
 	cout << endl;
-	for (k = 0; k < 8; k++) {
+	for (int k = 0; k < 8; k++) {
 		cout << "  ";
-		for (i = 0; i < 33; i++) {
+		for (int i = 0; i < 33; i++) {
 			cout << "-";
 		}
 		cout << endl;
 		cout << (k + 1 - debug) << " ";
-		for (j = 0; j < 8; j++) {
+		for (int j = 0; j < 8; j++) {
 		//Ploca
 			// Da lepo zgledi
 			if(debug == 0) {
@@ -123,7 +124,7 @@ void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], 
 		cout << "| \n";
 	}
 	cout << "  ";
-	for (i = 0; i < 33; i++) {
+	for (int i = 0; i < 33; i++) {
 		cout << "-";
 	}
 	cout << endl;
