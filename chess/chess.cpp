@@ -50,11 +50,11 @@ int main() {
 			row_from -= 1;
 			row_to -= 1;
 		}
-	//	if (board[row_from][(char_to_int(column_from))] == 'p' || board[row_from][(char_to_int(column_from))] == 'P') pijuni(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
-	//	else if (board[row_from][char_to_int(column_from)] == 'r' || board[row_from][char_to_int(column_from)] == 'R') kula(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno); 
-	//	else if (board[row_from][char_to_int(column_from)] == 'h' || board[row_from][char_to_int(column_from)] == 'H') konj(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
-	//	else if (board[row_from][char_to_int(column_from)] == 'c' || board[row_from][char_to_int(column_from)] == 'C') lovac(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
-	//	else if (board[row_from][char_to_int(column_from)] == 'k' || board[row_from][char_to_int(column_from)] == 'K') kralj(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
-	//	else if (board[row_from][char_to_int(column_from)] == 'q' || board[row_from][char_to_int(column_from)] == 'Q') kraljica(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
+		if (board[row_from][(char_to_int(column_from))] == 'p' || board[row_from][(char_to_int(column_from))] == 'P') pijuni(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
+		else if (board[row_from][char_to_int(column_from)] == 'r' || board[row_from][char_to_int(column_from)] == 'R') kula(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno); 
+		else if (board[row_from][char_to_int(column_from)] == 'h' || board[row_from][char_to_int(column_from)] == 'H') konj(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
+		else if (board[row_from][char_to_int(column_from)] == 'c' || board[row_from][char_to_int(column_from)] == 'C') lovac(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
+		else if (board[row_from][char_to_int(column_from)] == 'k' || board[row_from][char_to_int(column_from)] == 'K') kralj(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
+		else if (board[row_from][char_to_int(column_from)] == 'q' || board[row_from][char_to_int(column_from)] == 'Q') kraljica(row_to, row_from, column_to, column_from, board, bijeli_jede, crni_jede, ilegalno);
 	} while (igra_radi == 1);
 }
