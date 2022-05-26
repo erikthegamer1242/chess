@@ -6,7 +6,13 @@
 
 # Custom VSCode folders
 .vscode/
-
+*
+!chess/
+!.gitignore
+!.gitattributes
+!.chess.sln
+!LICENSE
+!README.md
 # User-specific files
 *.rsuser
 *.suo
