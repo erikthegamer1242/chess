@@ -1,6 +1,5 @@
 #include <math.h>
 #include <cctype>
-#include "common.h"
 //pijuni
 void pijuni(int row_to, int row_from, char column_to, char column_from, char board[][8], char bijeli_jede[][8], char crni_jede[][8], int &ilegalno) {
     int column_to_int = 0, column_from_int = 0;
