@@ -1,4 +1,5 @@
 #include "common.h"
+#include "figure.h"
 #include <cmath>
 #include <iostream>
 
