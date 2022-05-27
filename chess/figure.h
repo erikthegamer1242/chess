@@ -15,13 +15,36 @@ void pijuni(int row_to, int row_from, char column_to, char column_from, char boa
     {
       logika_za_crtanje(row_to, row_from, column_to, column_from, board);
     } 
-    else if (row_from != 6 && column_from == column_to && board[row_to][(char_to_int(column_to))] == ' ') 
+    else if (row_from != 6 && column_from == column_to && board[row_to][(char_to_int(column_to))] == ' ' && row_to!=0) 
     {
       if (row_from == row_to + 1)
         logika_za_crtanje(row_to, row_from, column_to, column_from, board);
       else
         ilegalno = 1;
     } 
+    else if (row_to == 0)
+    {
+        cout << "Which figure do you want to promote to: ";
+        char upit_promocija;
+        cin >> upit_promocija;
+        if (tolower(upit_promocija) == 'h')
+        {
+            board[row_to][column_to_int] = 'h';
+        }
+        if (tolower(upit_promocija) == 'r')
+        {
+            board[row_to][column_to_int] = 'r';
+        }
+        if (tolower(upit_promocija) == 'c')
+        {
+            board[row_to][column_to_int] = 'c';
+        }
+        if (tolower(upit_promocija) == 'q')
+        {
+            board[row_to][column_to_int] = 'q';
+        }
+    }
+
     else
       ilegalno = 1;
     //jedenje crni jede 

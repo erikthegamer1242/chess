@@ -17,7 +17,7 @@ using namespace std;
 #define FILENAME "chess.bin"
 
 int igra_radi = 1;
-int debug = 0;
+int debug = 1;
 int clear_screen = 1;
 int ilegalno = 0;
 char bijeli_jede[2][8] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
