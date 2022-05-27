@@ -5,7 +5,6 @@
 #include <string>
 #include <fstream>
 
-
 using namespace std;
 
 #if defined(_WIN32)
@@ -14,10 +13,8 @@ using namespace std;
 #define CLEAR system("clear");
 #endif
 
-#define FILENAME "chess.bin"
-
 int igra_radi = 1;
-int debug = 0;
+int debug = 1;
 int clear_screen = 1;
 int ilegalno = 0;
 char bijeli_jede[2][8] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -37,10 +34,14 @@ char board[8][8] = {{'R', 'H', 'C', 'Q', 'K', 'C', 'H', 'R'},
 
 int main() {
 	fstream file;
-	cout << "Do you want to load last game [y/N] ?";
+	cout << "Do you want to load last game [y/n] ?";
 	char choice;
 	cin >> choice;
+	string FILENAME;
 	if(toupper(choice) == 'Y') {
+		CLEAR;
+		cout << "Name of save file? ";
+		cin >> FILENAME;
 		cout << "Loading game!";
 			file.open(FILENAME, ios::binary | ios::in);
 			if(file.fail()) {
@@ -51,6 +52,7 @@ int main() {
             file.read((char*)&crni_jede, sizeof(crni_jede));
             file.read((char*)&board, sizeof(board));
 			file.close();
+			cout << "Loaded game!";
 	}
 	int row_from = 0, row_to = 0;
 	char column_from, column_to;
@@ -62,16 +64,19 @@ int main() {
 			printf("\nilegalno!!!");
 			ilegalno = 0;
 		}
-		cout <<"\nFrom position(Example:b1, if: f9 save game): ";
+		cout <<"\nFrom position(Example:b1, if:f9 - save game): ";
 		cin >> column_from;
 		cin >> row_from;
 		if(toupper(column_from)== 'F' && row_from == 9) {
-			cout << "Saving game!";
+			cout << "Enter save name: ";
+			cout << "Saving game!" << endl;
+			cin >> FILENAME;
 			file.open(FILENAME, ios::binary | ios::out);
 			file.write((char*)&bijeli_jede, sizeof(bijeli_jede));
             file.write((char*)&crni_jede, sizeof(crni_jede));
             file.write((char*)&board, sizeof(board));
 			file.close();
+			cout << "Game saved!";
 			return 0;
 		}
 		cout << "\nTo position(Example:c3): ";
