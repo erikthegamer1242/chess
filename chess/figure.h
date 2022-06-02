@@ -455,38 +455,8 @@ void lovac(int row_to, int row_from, char column_to, char column_from, char boar
 	column_from_int = char_to_int(column_from);
   int moze=1;
 
-  //lovac u kraljici
-  //Crni jede
-  if (isupper(board[row_to][column_to_int]) > 0 && islower(board[row_from][column_from_int]) > 0 && board[row_to][column_to_int]!='K')
-  { 
-    for( int i = 0; i<2; i++)
-    {
-      for(int j=0; j<8; j++) 
-      {
-        if(crni_jede[i][j] == ' ') 
-        {
-          crni_jede[i][j] = board[row_to][column_to_int];
-          board[row_to][column_to_int] = ' ';
-        }
-      }
-    } 
-  }
-  //Bijeli jede
-  if (islower(board[row_to][column_to_int]) > 0 && isupper(board[row_from][column_from_int]) > 0 && board[row_to][column_to_int]!='K')
-  { 
-    for( int i = 0; i<2; i++)
-    {
-      for(int j=0; j<8; j++) 
-      {
-        if(bijeli_jede[i][j] == ' ') 
-        {
-          bijeli_jede[i][j] = board[row_to][column_to_int];
-          board[row_to][column_to_int] = ' ';
-        }
-      }
-    } 
-  }
-  if(abs(row_from-row_to)==abs(column_from-column_to))
+  //crni lovac
+  if(abs(row_from-row_to)==abs(column_from-column_to) && islower(board[row_from][column_from_int])>0)
   {
     for(int i=row_from;i!=row_to;)
     {
@@ -522,6 +492,74 @@ void lovac(int row_to, int row_from, char column_to, char column_from, char boar
       logika_za_crtanje(row_to, row_from, column_to, column_from, board);
     else
       ilegalno=1;
+  }
+  //bijeli lovac
+  if (abs(row_from - row_to) == abs(column_from - column_to))
+  {
+      for (int i = row_from; i != row_to;)
+      {
+          for (int j = column_from_int; j != column_to_int;)
+          {
+              if (abs(i - j) == abs(row_from - column_from_int))
+              {
+                  if (row_from > row_to)
+                      i--;
+                  else
+                      i++;
+                  if (column_from_int > column_to_int)
+                      j--;
+                  else
+                      j++;
+                  if (board[i][j] != ' ')
+                      moze = 0;
+              }
+              else
+              {
+                  if (row_from > row_to)
+                      i--;
+                  else
+                      i++;
+                  if (column_from_int > column_to_int)
+                      j--;
+                  else
+                      j++;
+              }
+          }
+      }
+      if (moze == 1)
+          logika_za_crtanje(row_to, row_from, column_to, column_from, board);
+      else
+          ilegalno = 1;
+  }
+  //Crni jede
+  if (isupper(board[row_to][column_to_int]) > 0 && islower(board[row_from][column_from_int]) > 0 && board[row_to][column_to_int] != 'K')
+  {
+      for (int i = 0; i < 2; i++)
+      {
+          for (int j = 0; j < 8; j++)
+          {
+              if (crni_jede[i][j] == ' ')
+              {
+                  crni_jede[i][j] = board[row_to][column_to_int];
+                  board[row_to][column_to_int] = ' ';
+              }
+          }
+      }
+  }
+  //Bijeli jede
+  if (islower(board[row_to][column_to_int]) > 0 && isupper(board[row_from][column_from_int]) > 0 && board[row_to][column_to_int] != 'k')
+  {
+      for (int i = 0; i < 2; i++)
+      {
+          for (int j = 0; j < 8; j++)
+          {
+              if (bijeli_jede[i][j] == ' ')
+              {
+                  bijeli_jede[i][j] = board[row_to][column_to_int];
+                  board[row_to][column_to_int] = ' ';
+              }
+          }
+      }
   }
 }
 
