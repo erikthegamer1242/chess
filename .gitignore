@@ -13,6 +13,7 @@
 !.chess.sln
 !LICENSE
 !README.md
+!todo.txt
 # User-specific files
 *.rsuser
 *.suo
