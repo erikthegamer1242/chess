@@ -22,27 +22,28 @@ void pijuni(int row_to, int row_from, char column_to, char column_from, char boa
       else
         ilegalno = 1;
     } 
-    else if (row_to == 0)
+    else if (row_to == 7)
     {
         cout << "Which figure do you want to promote to: ";
         char upit_promocija;
         cin >> upit_promocija;
-        if (tolower(upit_promocija) == 'h')
+        if (toupper(upit_promocija) == 'H')
         {
-            board[row_to][column_to_int] = 'h';
+            board[row_to][column_to_int] = 'H';
         }
-        if (tolower(upit_promocija) == 'r')
+        if (toupper(upit_promocija) == 'R')
         {
-            board[row_to][column_to_int] = 'r';
+            board[row_to][column_to_int] = 'R';
         }
-        if (tolower(upit_promocija) == 'c')
+        if (toupper(upit_promocija) == 'C')
         {
-            board[row_to][column_to_int] = 'c';
+            board[row_to][column_to_int] = 'C';
         }
-        if (tolower(upit_promocija) == 'q')
+        if (toupper(upit_promocija) == 'Q')
         {
-            board[row_to][column_to_int] = 'q';
+            board[row_to][column_to_int] = 'Q';
         }
+        board[row_from][column_from_int] = ' ';
     }
 
     else
@@ -84,6 +85,29 @@ void pijuni(int row_to, int row_from, char column_to, char column_from, char boa
       else
         ilegalno = 1;
     } 
+    else if (row_to == 7)
+    {
+        cout << "Which figure do you want to promote to: ";
+        char upit_promocija;
+        cin >> upit_promocija;
+        if (tolower(upit_promocija) == 'h')
+        {
+            board[row_to][column_to_int] = 'h';
+        }
+        if (tolower(upit_promocija) == 'r')
+        {
+            board[row_to][column_to_int] = 'r';
+        }
+        if (tolower(upit_promocija) == 'c')
+        {
+            board[row_to][column_to_int] = 'c';
+        }
+        if (tolower(upit_promocija) == 'q')
+        {
+            board[row_to][column_to_int] = 'q';
+        }
+        board[row_from][column_from_int] = ' ';
+    }
     else
       ilegalno = 1;
     //bjeli jede 
