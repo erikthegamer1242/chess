@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <filesystem>
+
+
+namespace fs = std::filesystem;
+
 
 using namespace std;
 
@@ -33,6 +38,9 @@ char board[8][8] = {{'R', 'H', 'C', 'Q', 'K', 'C', 'H', 'R'},
 
 
 int main() {
+	string path = "./saves/";
+	for (const auto& entry : fs::directory_iterator(path))
+		cout << entry.path().filename() << endl;
 	fstream file;
 	cout << "Do you want to load last game [y/n] ?";
 	char choice;
@@ -43,7 +51,7 @@ int main() {
 		cout << "Name of save file? ";
 		cin >> FILENAME;
 		cout << "Loading game!";
-			file.open(FILENAME, ios::binary | ios::in);
+			file.open("./saves/" + FILENAME, ios::binary | ios::in);
 			if(file.fail()) {
 				cout << "Greska pri otvaranju " << FILENAME << ". Provjerie jeste li kreirali datoteku i je li ona pravilno napisana!\n";
 				return 0;
@@ -71,7 +79,7 @@ int main() {
 			cout << "Enter save name: ";
 			cout << "Saving game!" << endl;
 			cin >> FILENAME;
-			file.open(FILENAME, ios::binary | ios::out);
+			file.open("./saves/" + FILENAME, ios::binary | ios::out);
 			file.write((char*)&bijeli_jede, sizeof(bijeli_jede));
             file.write((char*)&crni_jede, sizeof(crni_jede));
             file.write((char*)&board, sizeof(board));
