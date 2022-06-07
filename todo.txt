@@ -1,4 +1,3 @@
 rooks: swaping positions with friendly figures, needs castling and test all ilegal moves
-camels(bishops): can eat illegaly but they dont move illegaly and also needs more testing
 queem: mix rooks and bishops working codes
 king: watch for the check, maybe checkmate, add illegal move if that move results in check
