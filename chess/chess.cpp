@@ -4,10 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <filesystem>
 
-
-namespace fs = std::filesystem;
 
 
 using namespace std;
@@ -19,7 +16,7 @@ using namespace std;
 #endif
 
 int igra_radi = 1;
-int debug = 1;
+int debug = 0;
 int clear_screen = 1;
 int ilegalno = 0;
 char bijeli_jede[2][8] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
@@ -38,9 +35,8 @@ char board[8][8] = {{'R', 'H', 'C', 'Q', 'K', 'C', 'H', 'R'},
 
 
 int main() {
+	int savesCount;
 	string path = "./saves/";
-	for (const auto& entry : fs::directory_iterator(path))
-		cout << entry.path().filename() << endl;
 	fstream file;
 	cout << "Do you want to load last game [y/n] ?";
 	char choice;
@@ -48,6 +44,7 @@ int main() {
 	string FILENAME;
 	if(toupper(choice) == 'Y') {
 		CLEAR;
+		filelist(savesCount, path);
 		cout << "Name of save file? ";
 		cin >> FILENAME;
 		cout << "Loading game!";

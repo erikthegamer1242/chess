@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cctype>
 #include <string>
+#include <filesystem>
+
+
+namespace fs = std::filesystem;
 
 using namespace std;
 
@@ -52,17 +56,17 @@ void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], 
 			//Polje iznad ploce, sto je bijeli pojeo (crne figure)
             if(debug == 0) {
                 if (bijeli_jede[i][j] == 'p') {
-                    cout << "  ♙ ";
+                    cout << "  \u265F ";
                 } else if (bijeli_jede[i][j] == 'r') {
-                    cout << "  ♖ ";
+                    cout << "  \u265C ";
                 } else if (bijeli_jede[i][j] == 'h') {
-                    cout << "  ♘ ";
+                    cout << "  \u265E ";
                 } else if (bijeli_jede[i][j] == 'c') {
-                    cout << "  ♗ ";
+                    cout << "  \u265D ";
                 } else if (bijeli_jede[i][j] == 'k') {
-                    cout << "  ♔ ";
+                    cout << "  \u265A ";
                 } else if (bijeli_jede[i][j] == 'q') {
-                    cout << "  ♕ ";
+                    cout << "  \u265B ";
                 }
             }
             else cout << "   " << bijeli_jede[i][j];
@@ -89,31 +93,31 @@ void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], 
 			if(debug == 0) {
 				//Crne figure unicode
 				if (board[k][j] == 'p') {
-					cout << "| ♙ ";
+					cout << "| \u265F ";
 				} else if (board[k][j] == 'r') {
-					cout << "| ♖ ";
+					cout << "| \u265C ";
 				} else if (board[k][j] == 'h') {
-					cout << "| ♘ ";
+					cout << "| \u265E ";
 				} else if (board[k][j] == 'c') {
-					cout << "| ♗ ";
+					cout << "| \u265D ";
 				} else if (board[k][j] == 'k') {
-					cout << "| ♔ ";
+					cout << "| \u265A ";
 				} else if (board[k][j] == 'q') {
-					cout << "| ♕ ";
+					cout << "| \u265B ";
 				}
 				// Bijele figure unicode frontend
 				else if (board[k][j] == 'P') {
-					cout << "| ♟︎ ";
+					cout << "| \u2659 ";
 				} else if (board[k][j] == 'R') {
-					cout << "| ♜ ";
+					cout << "| \u2656 ";
 				} else if (board[k][j] == 'H') {
-					cout << "| ♞ ";
+					cout << "| \u2658 ";
 				} else if (board[k][j] == 'C') {
-					cout << "| ♝ ";
+					cout << "| \u2657 ";
 				} else if (board[k][j] == 'K') {
-					cout << "| ♚ ";
+					cout << "| \u2654 ";
 				} else if (board[k][j] == 'Q') {
-					cout << "| ♛ ";
+					cout << "| \u2655 ";
 				} else 
 					cout << "| " << board[k][j] << " ";
 				}
@@ -134,17 +138,17 @@ void crtanje_ploce(char board[][8], char bijeli_jede[][8], char crni_jede[][8], 
 		//Polje ispod ploce, sto je crni pojeo (bijele figure)
         if(debug == 0) {
             if (crni_jede[i][j] == 'P') {
-                cout << "  ♟︎ ";
+                cout << "  \u2659 ";
             } else if (crni_jede[i][j] == 'R') {
-                cout << "  ♜ ";
+                cout << "  \u2656 ";
             } else if (crni_jede[i][j] == 'H') {
-                cout <<"  ♞ ";
+                cout <<"  \u2658 ";
             } else if (crni_jede[i][j] == 'C') {
-                cout << "  ♝ ";
+                cout << "  \u2657 ";
             } else if (crni_jede[i][j] == 'K') {
-                cout << "  ♚ ";
+                cout << "  \u2654 ";
             } else if (crni_jede[i][j] == 'Q') {
-                cout << "  ♛ ";
+                cout << "  \u2655 ";
             }
         }
         else cout << "   " << crni_jede[i][j];   
@@ -164,4 +168,21 @@ void logika_za_crtanje(int row_to, int row_from, char column_to, char column_fro
 	board[row_from][column_from_int] = board[row_to][column_to_int];
 	board[row_to][column_to_int] = temp_ploca;
 	int n = getchar();
+}
+
+void filelist(int &savesCount, string path) {
+	savesCount = 0;
+	for (const auto& entry : fs::directory_iterator(path)) {
+		//cout << entry.path().filename() << endl;
+		savesCount++;
+	}
+	string* saves = new string[savesCount];
+	savesCount = 0;
+	for (const auto& entry : fs::directory_iterator(path)) {
+		saves[savesCount] = entry.path().filename().string();
+		savesCount++;
+	}
+	for (int i = 0; i < savesCount; i++) {
+		cout << i+1 << ". " << saves[i] << endl;
+	}
 }
