@@ -142,8 +142,13 @@ void kula(int row_to, int row_from, char column_to, char column_from, char board
   
     if(column_to_int == column_from_int && row_to != row_from) 
     {
-      if(row_from - row_to > 0) //Gore
-      {
+        if ((isupper(board[row_from][column_from_int]) >= 1 && isupper(board[row_to][column_to_int]) >= 1) || (islower(board[row_from][column_from_int]) >= 1 && islower(board[row_to][column_to_int]) >= 1))
+        {
+            ilegalno = 1;
+            moze = 0;
+        }
+        if(row_from - row_to > 0) //Gore
+        {
         for(int i = row_from-1; i>=row_to; i--)
         {
           if(board[i][column_to_int] != ' ') 
@@ -230,6 +235,11 @@ void kula(int row_to, int row_from, char column_to, char column_from, char board
     }
     else if(column_to_int != column_from_int && row_to == row_from) 
     {
+       if ((isupper(board[row_from][column_from_int]) >= 1 && isupper(board[row_to][column_to_int]) >= 1) || (islower(board[row_from][column_from_int]) >= 1 && islower(board[row_to][column_to_int]) >= 1))
+       {
+           ilegalno = 1;
+           moze = 0;
+       }
       if(column_from_int - column_to_int > 0) //Lijevo
       {
         for(int i = column_from_int-1; i>=column_to_int; i--)
