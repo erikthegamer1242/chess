@@ -47,7 +47,7 @@ int main() {
 		filelist(savesCount, path);
 		cout << "Name of save file? ";
 		cin >> FILENAME;
-		cout << "Loading game!";
+		cout << "Loading game!\n";
 			file.open("./saves/" + FILENAME, ios::binary | ios::in);
 			if(file.fail()) {
 				cout << "Greska pri otvaranju " << FILENAME << ". Provjerie jeste li kreirali datoteku i je li ona pravilno napisana!\n";
